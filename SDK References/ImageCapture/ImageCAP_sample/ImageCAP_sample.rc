@@ -1,0 +1,240 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef APSTUDIO_INVOKED
+#include "targetver.h"
+#endif
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 한국어(대한민국) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#ifndef APSTUDIO_INVOKED\r\n"
+    "#include ""targetver.h""\r\n"
+    "#endif\r\n"
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)\r\n"
+    "LANGUAGE 18, 1\r\n"
+    "#pragma code_page(949)\r\n"
+    "#include ""res\\ImageCAP_sample.rc2""  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.\r\n"
+    "#include ""l.KOR\\afxres.rc""      // 표준 구성 요소입니다.\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\ImageCAP_sample.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ImageCAP_sample 정보"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
+    LTEXT           "ImageCAP_sample, 버전 1.0",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2014",IDC_STATIC,42,26,114,8
+    DEFPUSHBUTTON   "확인",IDOK,113,41,50,14,WS_GROUP
+END
+
+IDD_IMAGECAP_SAMPLE_DIALOG DIALOGEX 0, 0, 419, 227
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "ImageCAP_sample"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "AED",IDC_RADIO1,"Button",BS_AUTORADIOBUTTON | WS_GROUP,271,37,49,11
+    CONTROL         "Soft Trigger",IDC_RADIO2,"Button",BS_AUTORADIOBUTTON,271,48,49,11
+    CONTROL         "Average - Num",IDC_RADIO3,"Button",BS_AUTORADIOBUTTON,271,58,64,11
+    CONTROL         "Continuos",IDC_RADIO4,"Button",BS_AUTORADIOBUTTON,271,69,64,11
+    CONTROL         "Continuos - Binning",IDC_RADIO5,"Button",BS_AUTORADIOBUTTON,271,79,77,11
+    CONTROL         "",IDC_IPADDRESS1,"SysIPAddress32",WS_TABSTOP,76,32,100,15
+    CONTROL         "",IDC_IPADDRESS2,"SysIPAddress32",WS_TABSTOP,76,53,100,15
+    PUSHBUTTON      "Connect",IDC_BUTTON1,182,33,43,34
+    DEFPUSHBUTTON   "확인",IDOK,262,195,50,14
+    PUSHBUTTON      "취소",IDCANCEL,315,195,50,14
+    LTEXT           "Host IP",IDC_STATIC,43,37,27,9
+    LTEXT           "Sensor IP",IDC_STATIC,35,53,34,9
+    GROUPBOX        "Sensor Connect",IDC_STATIC,15,15,221,65
+    PUSHBUTTON      "Get Dark",IDC_BUTTON3,27,99,57,23
+    PUSHBUTTON      "X-Ray",IDC_BUTTON4,95,99,57,23
+    GROUPBOX        "Acqusition",IDC_STATIC,15,83,221,50
+    PUSHBUTTON      "Cancel",IDC_BUTTON5,164,99,57,23
+    EDITTEXT        IDC_EDIT1,16,193,221,16,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "Make",IDC_BUTTON7,164,152,57,23
+    GROUPBOX        "Calibration",IDC_STATIC,15,136,221,50
+    GROUPBOX        "Config",IDC_STATIC,243,15,164,170
+    PUSHBUTTON      "Apply",IDC_BUTTON8,271,99,57,23
+    GROUPBOX        "Acquisition Mode",IDC_STATIC,252,29,146,103
+    GROUPBOX        "Window Time",IDC_STATIC,252,136,146,41
+    EDITTEXT        IDC_EDIT2,265,153,48,15,ES_AUTOHSCROLL
+    LTEXT           "msec",IDC_STATIC,313,159,20,10
+    PUSHBUTTON      "Apply",IDC_BUTTON9,339,153,48,15
+    EDITTEXT        IDC_EDIT3,338,57,30,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "Dark",IDC_BUTTON10,27,152,57,23
+    PUSHBUTTON      "Bright",IDC_BUTTON11,95,152,57,23
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041203b5"
+        BEGIN
+            VALUE "CompanyName", "TODO: <회사 이름>"
+            VALUE "FileDescription", "TODO: <파일 설명>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "ImageCAP_sample.exe"
+            VALUE "LegalCopyright", "TODO: (c) <회사 이름>.  All rights reserved."
+            VALUE "OriginalFilename", "ImageCAP_sample.exe"
+            VALUE "ProductName", "TODO: <제품 이름>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 949
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 163
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_IMAGECAP_SAMPLE_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 412
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 220
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_IMAGECAP_SAMPLE_DIALOG AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDS_ABOUTBOX            "ImageCAP_sample 정보(&A)..."
+END
+
+#endif    // 한국어(대한민국) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE 18, 1
+#pragma code_page(949)
+#include "res\ImageCAP_sample.rc2"  // Microsoft Visual C++ 이외의 다른 도구에서 편집한 리소스입니다.
+#include "l.KOR\afxres.rc"      // 표준 구성 요소입니다.
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
