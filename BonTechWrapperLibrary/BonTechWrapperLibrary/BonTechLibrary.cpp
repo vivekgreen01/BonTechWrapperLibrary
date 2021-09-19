@@ -44,10 +44,10 @@ int __stdcall Disconnect(unsigned int nSensorIP)
 
 int __stdcall GetImageSize(unsigned int nSensorIP, unsigned short* nWidth, unsigned short* nHeight)
 {
-    unsigned short h, w;
-    nErrorCode = ImageCapGetFrameSize(nSensorIP, &w, &h);
-    *nWidth = w;
-    *nHeight = h;
+    unsigned short height, width;
+    nErrorCode = ImageCapGetFrameSize(nSensorIP, &width, &height);
+    *nWidth = width;
+    *nHeight = height;
     return nErrorCode;
 }
 
@@ -57,3 +57,54 @@ int __stdcall SetAcquisitionMode(unsigned int nSensorIP, int nMode)
     return nErrorCode;
 }
 
+int __stdcall StartContinuousAcquisition(unsigned int nSensorIP)
+{//Send ImageCapCommandSend and then call ImageCapStartCapture
+    //TODO: Launch a Thread
+    return nErrorCode;
+
+}
+
+int __stdcall StopContinuousAcquisition(unsigned int nSensorIP)
+{
+    nErrorCode = ImageCapStopCapture(nSensorIP);
+    return nErrorCode;
+}
+
+int __stdcall CaptureSingleImage(unsigned int nSensorIP)
+{//Capture using ImageCap
+    //TODO: Capture Single Image and pass it to LabVIEW
+    //nErrorCode = ImageCapImageAcquistion(nSensorIP, unsigned short *pImage)
+    return nErrorCode;
+}
+
+int __stdcall CancelSingleImageCapture(unsigned int nSensorIP)
+{
+    nErrorCode = ImageCapAcquisitionCancel(nSensorIP);
+    return nErrorCode;
+}
+
+int __stdcall CopyImageToLV(IMAQ_Image *LVImage) 
+{
+    Image* myImage, *lvImage;
+    PixelValue pixel;
+    ImageInfo myImageInfo, lvImageInfo;
+    int y, LVHeight, LVWidth;
+    lvImage = LVImage->address;
+    pixel.grayscale = 16000;
+    myImage = imaqCreateImage(IMAQ_IMAGE_U16, 3);
+    imaqGetImageSize(lvImage, &LVWidth, &LVHeight);
+    imaqSetImageSize(myImage, LVWidth, LVHeight);
+    imaqFillImage(myImage,pixel, NULL);
+
+    imaqGetImageInfo(myImage, &myImageInfo);
+    imaqGetImageInfo(lvImage, &lvImageInfo);
+    //LVImage->address = myImage;
+
+    for (y = 0; y < LVHeight; ++y)
+    {
+        memcpy((unsigned short*)lvImageInfo.imageStart + (long long)y * (lvImageInfo.pixelsPerLine),
+            (unsigned short*)myImageInfo.imageStart + (long long)y * (myImageInfo.pixelsPerLine), LVWidth);
+    }
+    imaqDispose(myImage);
+    return 0;
+}

@@ -1,14 +1,22 @@
 #pragma once
+
+#include "nivision.h"
+
 #ifndef BONTECHLIBRARY_EXPORTS
 #define BONTECHLIBRARY_EXPORTS
 #endif // !BONTECHLIBRARY_EXPORTS
-
 
 #ifdef BONTECHLIBRARY_EXPORTS
 #define BONTECHLIBRARY_API __declspec(dllexport)
 #else
 #define BONTECHLIBRARY_API __declspec(dllimport)
 #endif
+
+//Image Data as LabVIEW Cluster
+typedef struct {
+	char* name;
+	Image* address;
+}IMAQ_Image;
 
 //Data Structure to pass to Threads
 typedef struct TH_PARAM
@@ -85,3 +93,31 @@ enum{
 * @returns the Status whether operation is suceeded or not.
 */
 extern "C" BONTECHLIBRARY_API int __stdcall SetAcquisitionMode(unsigned int nSensorIP, int nMode);
+
+/*
+Start Continuous Acquisition
+params Need to be updated
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall StartContinuousAcquisition(unsigned int nSensorIP);
+
+/*
+Stop Continuous Acquisition
+@param nSensorIP Specifies Sensor IP
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall StopContinuousAcquisition(unsigned int nSensorIP);
+
+/*
+Capture a Single Image
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall CaptureSingleImage(unsigned int nSensorIP);
+
+/*
+Cancel the Image Capture
+Needs Update
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall CancelSingleImageCapture(unsigned int nSensorIP);
+
+/*
+Copies an Image to LabVIEW
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall CopyImageToLV(IMAQ_Image * LVImage);
