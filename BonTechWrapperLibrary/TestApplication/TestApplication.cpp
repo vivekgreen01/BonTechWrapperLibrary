@@ -2,12 +2,35 @@
 //
 
 #include <iostream>
+#include "nivision.h"
 
 int main()
 {
     int m_HistogramSize = 1 << 16;
     std::cout << "Hello World!\n";
-    std::cout << sizeof(unsigned short);
+    std::cout << sizeof(short int)<<std::endl;
+
+    short int x= 65535;
+    short int y= 32768;
+    int z = x ^ y;
+    std::cout << z<<std::endl;
+
+    Image* myImage;
+    PixelValue pixel;
+    ImageInfo myImageInfo;
+    int LVHeight, LVWidth;
+    LVHeight = 2;
+    LVWidth = 4096;
+    pixel.grayscale = 100;
+    myImage = imaqCreateImage(IMAQ_IMAGE_U16, 3);
+    imaqSetImageSize(myImage, LVWidth, LVHeight);
+    imaqFillImage(myImage, pixel, NULL);
+    imaqGetImageInfo(myImage, &myImageInfo);
+
+    std::cout << "ImageType = " << myImageInfo.imageType<<std::endl;
+    std::cout << "PixelsPerLine = " << myImageInfo.pixelsPerLine<<std::endl;
+    imaqDispose(myImage);
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

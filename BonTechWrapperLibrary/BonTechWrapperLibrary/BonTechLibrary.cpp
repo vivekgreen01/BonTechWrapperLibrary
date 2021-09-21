@@ -98,13 +98,13 @@ int __stdcall CopyImageToLV(IMAQ_Image *LVImage)
 
     imaqGetImageInfo(myImage, &myImageInfo);
     imaqGetImageInfo(lvImage, &lvImageInfo);
-    //LVImage->address = myImage;
+    LVImage->address = myImage;
 
-    for (y = 0; y < LVHeight; ++y)
+    /*for (y = 0; y < LVHeight; ++y)
     {
-        memcpy((unsigned short*)lvImageInfo.imageStart + (long long)y * (lvImageInfo.pixelsPerLine),
-            (unsigned short*)myImageInfo.imageStart + (long long)y * (myImageInfo.pixelsPerLine), LVWidth);
+        memcpy((char*)lvImageInfo.imageStart + (long long)y * (lvImageInfo.pixelsPerLine),
+            (char*)myImageInfo.imageStart + (long long)y * (myImageInfo.pixelsPerLine), LVWidth);
     }
-    imaqDispose(myImage);
+    imaqDispose(myImage);*/
     return 0;
 }
