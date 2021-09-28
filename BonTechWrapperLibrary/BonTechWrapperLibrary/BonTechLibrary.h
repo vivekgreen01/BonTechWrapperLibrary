@@ -121,3 +121,8 @@ extern "C" BONTECHLIBRARY_API int __stdcall CancelSingleImageCapture(unsigned in
 Copies an Image to LabVIEW
 */
 extern "C" BONTECHLIBRARY_API int __stdcall CopyImageToLV(IMAQ_Image * LVImage);
+
+/*
+
+*/
+extern "C" BONTECHLIBRARY_API int __stdcall Copy_C_Image_To_LabVIEW_Image(char* LVImagePtr, int LVLineWidth, int LVWidth, int LVHeight);

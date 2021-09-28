@@ -3,33 +3,68 @@
 
 #include <iostream>
 #include "nivision.h"
+#include <fstream>
+using namespace std;
+
+int readRawFile(unsigned short* pSrc, int width, int height)
+{
+    ifstream file;
+    file.open("test.raw", ios::in | ios::binary);
+    if (file.is_open() == true)
+    {
+        file.read(reinterpret_cast<char*>(pSrc), width * height * 2);
+        file.close();
+        return 1;
+    }
+    else return 0;
+}
 
 int main()
 {
-    int m_HistogramSize = 1 << 16;
+    /*int m_HistogramSize = 1 << 16;
     std::cout << "Hello World!\n";
     std::cout << sizeof(short int)<<std::endl;
 
     short int x= 65535;
     short int y= 32768;
     int z = x ^ y;
-    std::cout << z<<std::endl;
+    std::cout << z<<std::endl;*/
 
     Image* myImage;
     PixelValue pixel;
     ImageInfo myImageInfo;
-    int LVHeight, LVWidth;
-    LVHeight = 2;
-    LVWidth = 4096;
-    pixel.grayscale = 100;
+    int LVHeight, LVWidth, handle,y;
+    LVHeight = 3052;
+    LVWidth = 2500;
+    pixel.grayscale = 65535;
+
+    unsigned short* pSrc = new unsigned short[LVWidth * LVHeight * 2];
+    readRawFile(pSrc, LVWidth, LVHeight);
+
     myImage = imaqCreateImage(IMAQ_IMAGE_U16, 3);
     imaqSetImageSize(myImage, LVWidth, LVHeight);
     imaqFillImage(myImage, pixel, NULL);
     imaqGetImageInfo(myImage, &myImageInfo);
+    
+    imaqGetWindowHandle(&handle);
+    imaqSetWindowSize(handle, 1280, 720);
+    imaqSetWindowZoomToFit(handle, 1);
+    imaqDisplayImage(myImage, handle, 1);
+
+    cin >> y;
 
     std::cout << "ImageType = " << myImageInfo.imageType<<std::endl;
     std::cout << "PixelsPerLine = " << myImageInfo.pixelsPerLine<<std::endl;
+    for (y = 0; y < LVHeight; ++y)
+    {
+        memcpy((unsigned short*)myImageInfo.imageStart + myImageInfo.pixelsPerLine * y, pSrc + LVWidth * y, LVWidth*2);
+    }
+
+    imaqDisplayImage(myImage, handle, 1);
+    cin >> y;
+
     imaqDispose(myImage);
+    delete[] pSrc;
 
 }
 
